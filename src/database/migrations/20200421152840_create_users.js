@@ -4,8 +4,8 @@ exports.up = function (knex) {
         table.string('name').notNullable();
         table.string('email').notNullable();
         table.string('password').notNullable();
-        table.dateTime('created_at').notNullable().defaultTo(knex.fn.now());
-        table.dateTime('updated_at').notNullable().defaultTo(knex.fn.now());
+
+        table.dateTime('created_at').defaultTo(knex.fn.now());
     });
 };
 
