@@ -1,8 +1,9 @@
 const express = require('express');
 const { celebrate, Joi, Segments } = require('celebrate');
 
-const UserController = require('./controllers/UserController');
 const SessionController = require('./controllers/SessionController');
+const ProfileController = require('./controllers/ProfileController');
+const UserController = require('./controllers/UserController');
 
 const routes = express.Router();
 
@@ -12,6 +13,8 @@ routes.post('/session', celebrate({
         password: Joi.string().required().min(8),
     }),
 }), SessionController.create);
+
+routes.get('/profile', ProfileController.index);
 
 routes.get('/users', UserController.index);
 
