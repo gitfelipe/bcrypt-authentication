@@ -14,7 +14,11 @@ routes.post('/session', celebrate({
     }),
 }), SessionController.create);
 
-routes.get('/profile', ProfileController.index);
+routes.get('/profile', celebrate({
+    [Segments.HEADERS]: Joi.object({
+        authorization: Joi.string().email().required(),
+    }).unknown(),
+}), ProfileController.index);
 
 routes.get('/users', UserController.index);
 
